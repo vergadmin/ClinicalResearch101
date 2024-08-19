@@ -1,0 +1,133 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f4; 
+}
+
+#likert {
+    display: none;
+}
+
+.title {
+    color: #002657;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 25px;
+    text-align: left;
+}
+
+.header img {
+    height: 65px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 3px solid #002657;
+}
+
+.logo {
+    height: 50px;
+}
+
+.video-container {
+    margin: 45px auto;
+    width: 75%;
+}
+
+.video-container video {
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 17px 50px -25px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 17px 50px -25px rgba(0,0,0,0.55);
+    box-shadow: 0px 17px 50px -25px rgba(0,0,0,0.55);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button {
+    color: white;
+    padding: 15px 20px;
+    margin: 11px;
+    font-size: 17px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .2s ease-in-out
+}
+
+.orange {
+    background-color: #fa4616;
+}
+
+.blue {
+    background-color: #002657;
+}
+
+.green {
+    background-color: #22884c;
+}
+
+#next {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+}
+
+#back {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .header .title {
+        font-size: 21px;
+        line-height: 1;
+    }
+
+    .header img {
+        height: 45px;
+    }
+
+    .video-container {
+        width: 95%;
+        margin: 25px auto;
+    }
+
+    .button {
+        font-size: 15px;
+        padding: 9px 15px;
+        margin: 5px;
+    }
+
+    .button:hover {
+        transform: none;
+        animation: none;
+    }
+}

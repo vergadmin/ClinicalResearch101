@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Research Studies With ALEX</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="title">Clinical Research 101 With ALEX</h1>
+        <img src="UFHealthLogo.png" alt="UF Health">
+    </div>
+
+    <div class="video-container">
+        <video width="100%" controls>
+            <source src="introduction.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="educate" class="buttons">
+        <button id="introduction" class="button blue" onclick="addActiveClass(this)">Introduction</button>
+        <button id="why-participate" class="button blue" onclick="addActiveClass(this)">Why Participate?</button>
+        <button id="types" class="button blue" onclick="addActiveClass(this)">Types of Clinical Research</button>
+        <button id="research-vs-regular" class="button blue" onclick="addActiveClass(this)">Clinical Research vs Regular Care</button>
+        <button id="right-for-me" class="button blue" onclick="addActiveClass(this)">Is participating right for me?</button>
+    </div>
+
+    <div id="likert" class="buttons">
+        <button class="button orange">1</button>
+        <button class="button blue">2</button>
+        <button class="button blue">3</button>
+        <button class="button blue">4</button>
+        <button class="button blue">5</button>
+    </div>
+
+    <button id="next" class="button green" onclick="proceedToNextSteps()">Next Steps</button>
+    <button id="back" class="button blue" onclick="returnToEducate()">Go Back</button>
+
+
+</body>
+<script src="script.js"></script>
+</html>

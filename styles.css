@@ -13,8 +13,12 @@ body {
     display: none;
 }
 
-.title {
+h1 {
     color: #002657;
+    line-height: 1;
+}
+
+.title {
     text-transform: uppercase;
     font-weight: 900;
     font-size: 25px;
@@ -78,22 +82,60 @@ body {
     background-color: #22884c;
 }
 
-#next {
-    position: absolute;
-    bottom: 5px;
-    right: 15px;
-}
-
 #back {
     display: none;
-    position: absolute;
-    bottom: 5px;
-    left: 15px;
 }
 
 .button:hover {
     transform: scale(1.1);
     animation: pulse-animation 2s infinite;
+}
+
+.select-alex-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 55px;
+}
+
+.select-alex-area img {
+    border-radius: 50%;
+    height: 305px;
+    transition: .2s ease-in-out;
+}
+
+.select-alex-area img:hover {
+    transform: scale(1.1);
+    animation: pulse-animation 2s infinite;
+    cursor: pointer;
+}
+
+.bottom-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+#select {
+    flex-direction: column;
+}
+
+#interaction {
+    height: 100%;
+    flex-direction: column;
+    display: none;
+}
+
+#change-alex {
+    color:#002657;
+    transition: .2s ease-in-out;
+}
+
+#change-alex:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color:#fa4616;
 }
 
 @keyframes pulse-animation {
@@ -108,7 +150,6 @@ body {
 @media only screen and (max-width: 600px) {
     .header .title {
         font-size: 21px;
-        line-height: 1;
     }
 
     .header img {
@@ -129,5 +170,17 @@ body {
     .button:hover {
         transform: none;
         animation: none;
+    }
+
+    .heading-area {
+        margin: 0px 35px;;
+    }
+
+    .select-alex-area img {
+        height: 205px;
+    }
+
+    .bottom-nav {
+        flex-direction: column;
     }
 }

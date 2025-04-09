@@ -1,5 +1,8 @@
+var character = null;
+
 function addActiveClass(element) {
     console.log(element)
+    console.log(character)
     // Remove 'active' class from all buttons
     const buttons = document.querySelectorAll('.button');
     buttons.forEach(button => button.classList.remove('orange'));
@@ -14,14 +17,14 @@ function addActiveClass(element) {
     }
 
     console.log(element.id)
-    changeVideoSource(element.id)
+    changeVideoSource('/' + character + '/' + element.id)
 }
 
 
 function changeVideoSource(newSource) {
     const videoElement = document.querySelector('video');
     const sourceElement = videoElement.querySelector('source');
-    sourceElement.src = 'https://clinical-research-101.s3.amazonaws.com/' + newSource + '.mp4';
+    sourceElement.src = newSource + '.mp4';
     videoElement.load();
     videoElement.play()
 }
@@ -45,19 +48,21 @@ function returnToEducate() {
     addActiveClass(document.getElementById("introduction"))
 }
 
-function startInteraction() {
+function startInteraction(alex) {
+    character = alex
+    console.log('/' + alex + '/intro')
     document.getElementById("select").style.display = "none";
     document.getElementById("interaction").style.display = "flex";
-    changeVideoSource('introduction')
-    const firstButton = document.querySelector('.button');
-    if (firstButton) {
-        firstButton.classList.remove('blue');
-        firstButton.classList.add('orange');
-        if (firstButton.innerHTML.split('✅').length - 1 < 1) firstButton.innerHTML += ' ✅';
-        firstButton.classList.add('checked');
-    }
-    const videoElement = document.querySelector('video');
-    videoElement.play()
+    // changeVideoSource('/' + character + '/intro')
+    // const firstButton = document.querySelector('.button');
+    // if (firstButton) {
+    //     firstButton.classList.remove('blue');
+    //     firstButton.classList.add('orange');
+    //     if (firstButton.innerHTML.split('✅').length - 1 < 1) firstButton.innerHTML += ' ✅';
+    //     firstButton.classList.add('checked');
+    // }
+    // const videoElement = document.querySelector('video');
+    // videoElement.play()
 }
 
 

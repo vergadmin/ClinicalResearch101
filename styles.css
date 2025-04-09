@@ -96,12 +96,14 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     margin: 55px;
+    width: 65%;
 }
 
 .select-alex-area img {
     border-radius: 50%;
     height: 305px;
     transition: .2s ease-in-out;
+    padding: 15px !important;
 }
 
 .select-alex-area img:hover {

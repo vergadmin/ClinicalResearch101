@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+   
 
     <div class="header">
         <h1 class="title">Introduction to Cancer Clinical Cesearch</h1>
@@ -34,6 +35,11 @@
 
     <div id="interaction">
         <div class="video-container">
+            <div id="countdown-loader">
+                <div class="loader">
+                    <p id="countdown">5</p>
+                </div>
+            </div>
             <video autoplay width="100%" controls>
                 <source src="/blackfemale/intro.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -45,8 +51,8 @@
             <button id="q1" class="button blue" onclick="addActiveClass(this)">Why Participate?</button>
             <button id="q2" class="button blue" onclick="addActiveClass(this)">Types of Clinical Research</button>
             <button id="q3" class="button blue" onclick="addActiveClass(this)">Clinical Research vs Regular Care</button>
-            <button id="q5" class="button blue" onclick="addActiveClass(this)">What is Randomization?</button>
-            <button id="q4" class="button blue" onclick="addActiveClass(this)">Is Participating Right for Me?</button>
+            <button id="q4" class="button blue" onclick="addActiveClass(this)">What is Randomization?</button>
+            <button id="q5" class="button blue" onclick="addActiveClass(this)">Is Participating Right for Me?</button>
         </div>
     
         <div id="likert" class="buttons">
@@ -64,82 +70,121 @@
 </body>
 <script>
     var character = null;
+    var videos = ["intro", "q1", "q2", "q3", "q4", "q5", "next-steps"]
+    var videoCounter = 0
 
-function addActiveClass(element) {
-    console.log(element)
-    console.log(character)
-    // Remove 'active' class from all buttons
-    const buttons = document.querySelectorAll('.button');
-    buttons.forEach(button => button.classList.remove('orange'));
-    buttons.forEach(button => button.classList.add('blue'));
+    function addActiveClass(element) {
+        console.log(element)
+        console.log(character)
+        // Remove 'active' class from all buttons
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => button.classList.remove('orange'));
+        buttons.forEach(button => button.classList.add('blue'));
 
-    // Add 'active' class to the clicked button
-    element.classList.remove('blue');
-    element.classList.add('orange');
-    if (!element.classList.contains('checked')) {
-        element.innerHTML += ' ✅';
-        element.classList.add('checked');
+        // Add 'active' class to the clicked button
+        element.classList.remove('blue');
+        element.classList.add('orange');
+        if (!element.classList.contains('checked')) {
+            element.innerHTML += ' ✅';
+            element.classList.add('checked');
+        }
+
+        console.log(element.id)
+        changeVideoSource('/' + character + '/' + element.id)
     }
 
-    console.log(element.id)
-    changeVideoSource('/' + character + '/' + element.id)
-}
 
-
-function changeVideoSource(newSource) {
-    const videoElement = document.querySelector('video');
-    const sourceElement = videoElement.querySelector('source');
-    sourceElement.src = newSource + '.mp4';
-    videoElement.load();
-    videoElement.play()
-}
-
-
-function proceedToNextSteps() {
-    document.getElementById("educate").style.display = "none";
-    document.getElementById("likert").style.display = "flex";
-    document.getElementById("change-alex").style.display = "none";
-    document.getElementById("next").style.display = "none";
-    document.getElementById("back").style.display = "flex";
-    changeVideoSource('/' + character + '/next-steps')
-}
-
-function returnToEducate() {
-    document.getElementById("educate").style.display = "flex";
-    document.getElementById("likert").style.display = "none";
-    document.getElementById("next").style.display = "flex";
-    document.getElementById("back").style.display = "none";
-    changeVideoSource('/' + character + '/intro')
-    addActiveClass(document.getElementById("intro"))
-}
-
-function startInteraction(alex) {
-    character = alex
-    console.log('/' + alex + '/intro')
-    document.getElementById("select").style.display = "none";
-    document.getElementById("interaction").style.display = "flex";
-    changeVideoSource('/' + character + '/intro')
-    const firstButton = document.querySelector('.button');
-    if (firstButton) {
-        firstButton.classList.remove('blue');
-        firstButton.classList.add('orange');
-        if (firstButton.innerHTML.split('✅').length - 1 < 1) firstButton.innerHTML += ' ✅';
-        firstButton.classList.add('checked');
+    function changeVideoSource(newSource) {
+        const videoElement = document.querySelector('video');
+        const sourceElement = videoElement.querySelector('source');
+        sourceElement.src = newSource + '.mp4';
+        videoElement.load();
+        videoElement.play()
     }
-    const videoElement = document.querySelector('video');
-    videoElement.play()
-}
+
+    function proceedToNextSteps() {
+        document.getElementById("educate").style.display = "none";
+        document.getElementById("likert").style.display = "flex";
+        document.getElementById("change-alex").style.display = "none";
+        document.getElementById("next").style.display = "none";
+        document.getElementById("back").style.display = "flex";
+        changeVideoSource('/' + character + '/next-steps')
+    }
+
+    function returnToEducate() {
+        document.getElementById("educate").style.display = "flex";
+        document.getElementById("likert").style.display = "none";
+        document.getElementById("next").style.display = "flex";
+        document.getElementById("back").style.display = "none";
+        changeVideoSource('/' + character + '/intro')
+        addActiveClass(document.getElementById("intro"))
+    }
+
+    function startInteraction(alex) {
+        character = alex
+        console.log('/' + alex + '/intro')
+        document.getElementById("select").style.display = "none";
+        document.getElementById("interaction").style.display = "flex";
+        changeVideoSource('/' + character + '/intro')
+        const firstButton = document.querySelector('.button');
+        if (firstButton) {
+            firstButton.classList.remove('blue');
+            firstButton.classList.add('orange');
+            if (firstButton.innerHTML.split('✅').length - 1 < 1) firstButton.innerHTML += ' ✅';
+            firstButton.classList.add('checked');
+        }
+        const videoElement = document.querySelector('video');
+        videoElement.play()
+    }
 
 
-function changeCharacter() {
-    const videoElement = document.querySelector('video');
-    videoElement.pause()
-    const buttons = document.querySelectorAll('.button');
-    buttons.forEach(button => button.classList.remove('orange'));
-    buttons.forEach(button => button.classList.add('blue'));
-    document.getElementById("select").style.display = "flex";
-    document.getElementById("interaction").style.display = "none";
-}
+    function changeCharacter() {
+        const videoElement = document.querySelector('video');
+        videoElement.pause()
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => button.classList.remove('orange'));
+        buttons.forEach(button => button.classList.add('blue'));
+        document.getElementById("select").style.display = "flex";
+        document.getElementById("interaction").style.display = "none";
+    }
+
+    const video = document.querySelector('video');
+    video.addEventListener('ended', () => {
+        console.log('Video has ended, sarting countdown.');
+        const src = video.currentSrc;
+        const videoName = src.split('/').pop().replace('.mp4', '');
+        console.log(videoName); // "intro", "q1", etc.
+        const videoIndex = videos.indexOf(videoName);
+
+        console.log(videoIndex);
+        console.log(videos[videoIndex])
+
+        let countdown = 5;
+        document.getElementById("countdown").innerHTML = 5;
+        if (videos[videoIndex] !== "next-steps") {
+            document.getElementById("countdown-loader").style.display = "flex"
+            const intervalId = setInterval(() => {
+            console.log(`Countdown: ${countdown}`);
+            countdown--;
+            document.getElementById("countdown").innerHTML = countdown;
+
+            if (countdown < 0) {
+                document.getElementById("countdown-loader").style.display = "none"
+                clearInterval(intervalId);
+                console.log("COUNTDOWN IS DONE")
+                var nextVideo = videos[videoIndex + 1]
+                if (nextVideo === "next-steps") {
+                    proceedToNextSteps()
+                } else {
+                    var nextVideoElement = document.getElementById(nextVideo)
+                    addActiveClass(nextVideoElement)
+                    changeVideoSource('/' + character + '/' + nextVideo)
+                }
+            }
+        }, 1000);
+        }
+        
+    });
 
 
 </script>
